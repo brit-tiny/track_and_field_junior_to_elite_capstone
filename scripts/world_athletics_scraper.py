@@ -28,7 +28,7 @@ def scrape_page(url, max_retries=3, timeout=15):
 
 #change max_pages to match the max pages of the page you are scraping (must match page count in scrape_loop.ipynb)
 
-def scrape_all_pages(base_url, max_pages=135, delay=1.0):
+def scrape_all_pages(base_url, max_pages=5, delay=1.0):
     all_dfs = []
     last_df = None
 
