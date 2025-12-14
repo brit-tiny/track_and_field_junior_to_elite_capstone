@@ -12,9 +12,9 @@ from src.utils import ensure_directory
 def main():
     print("\n Starting Full Cleaning Pipeline")
 
-    input_dir = Path("../data/interim/combined")
+    input_dir = Path("../capstone/data/interim/combined")
 
-    output_dir = ensure_directory("../data/processed")
+    output_dir = ensure_directory("../capstone/data/cleaned")
 
     csv_files = list(input_dir.glob("*csv"))
     print(f"Found {len(csv_files)} files to clean.\n")
