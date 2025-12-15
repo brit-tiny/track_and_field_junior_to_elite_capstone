@@ -19,6 +19,7 @@ def calculate_age(dob, meet_date):
         age -= 1
     return age
 
+
 # Clean Event File
 def clean_event_file(filepath, event_name):
 
@@ -58,7 +59,7 @@ def clean_event_file(filepath, event_name):
     # Calculate age
 
     df["Age"] = df.apply(lambda row: calculate_age(row["DOB"], row["Date"]), axis=1)
-
+    df = df[df["Age"] >= 10]
 
     # 5. Gender Column
 
@@ -77,6 +78,7 @@ def clean_event_file(filepath, event_name):
         )
     else:
         df["is_indoor"] = 0
+
 
     return df
 

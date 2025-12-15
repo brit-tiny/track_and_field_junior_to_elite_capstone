@@ -64,14 +64,27 @@ for csv_file in csv_files:
         "meet_id",
         "Date",
         "Mark",
-        "Age"
+        "Age",
+        "Age_category"
     ]].copy()
+
+    if "WIND" in df.columns:
+        fact_df["WIND"] = df["WIND"]
+    else:
+        fact_df["WIND"] = None
 
     fact_df = fact_df.rename(columns={
         "Date": "date",
         "Mark": "mark",
-        "Age": "age"
+        "Age": "age",
+        "Age_category": "age_group",
+        "WIND": "wind"
     })
+
+    fact_df["age_group"] = fact_df["age_group"].str.strip().str.upper()
+
+    print("Fact columns:", fact_df.columns.tolist())
+    print(fact_df[["age_group"]].dropna().head())
 
     all_facts.append(fact_df)
 
