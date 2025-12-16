@@ -86,13 +86,22 @@ print("dim_events table populated.")
 #-----DIM_MEETS-----
 print("Starting dim_meets block.")
 
-cursor.execute("DELETE FROM dim_meets;")
+conn.execute("DELETE FROM dim_meets;")
 conn.commit()
 
 venues_path = Path("data/interim/venues/geocoded_venues.csv")
 venues_df = pd.read_csv(venues_path)
 
-venues_df = venues_df[["Venue", "elevation"]].drop_duplicates()
+venues_df = venues_df.rename(columns={
+    "Venue": "venue"
+})
+
+venues_df = venues_df[[
+    "venue", 
+    "latitude", 
+    "longitude", 
+    "elevation"
+]].drop_duplicates()
 
 all_meets = []
 
@@ -101,6 +110,8 @@ for csv_file in csv_files:
 
     # Selecting the columns
     meet_df = df[["Venue", "is_indoor"]].copy()
+    meet_df = meet_df.rename(columns={"Venue": "venue"})
+
     all_meets.append(meet_df)
 
 meet_df = (
@@ -110,16 +121,13 @@ meet_df = (
 
 meet_df = meet_df.merge(
     venues_df,
-    on="Venue",
+    on="venue",
     how="left"
 )
     
 # Drop missing elevation rows
-meet_df = meet_df.dropna(subset=["elevation"])
-
-meet_df = meet_df.rename(columns={
-    "Venue": "venue"
-})
+for col in ["latitude", "longitude", "elevation"]:
+    meet_df.loc[meet_df[col].isna(), col] = "Not Found"
 
 print(f"Unique meets to insert: {len(meet_df)}")
 

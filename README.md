@@ -12,3 +12,6 @@ This project aims to analyze top performance in long jump, triple jump, and high
 Missing Elevation Data
 
 Venue elevation was included where city level data was publicly available. Many venues were only listed by name and country lacking any precise information for geolocation, thus resulting in a null elevation. I chose this approach to keep my dataset's integrity while not forcing a false narrative. 
+
+
+Raw World Athletics data was scraped and combined by event and gender into interim datasets using Python script prior to exploration, cleaning and analysis.
