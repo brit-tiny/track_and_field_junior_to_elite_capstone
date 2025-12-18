@@ -1,37 +1,42 @@
-Track and Field Jumps Performance Analysis
+# Track and Field Jumps Performance Analysis
 
-Overview:
+This repository contains data scraped from worldathletics.org. The venue locations were isolated and geocode data was found using chatGPT.
+
+## Overview:
 
 This project aims to analyze top performance in long jump, triple jump, and high jump from U18 to senior (professional) level and build trajectory style projections. The project uses scraped competition results, structured data cleaning, a relational SQLite database, and SQL analysis to explore athlete development.
 
-Data Sources:
+## Data Sources:
 
-- World Althetics <add url>
+- [World Althetics](urlhttps://worldathletics.org/records/toplists/jumps/high-jump/all/women/senior/2025?regionType=world&page=1&bestResultsOnly=true&maxResultsByCountry=all&eventId=10229526&ageCategory=senior)
+
 - Venue geocoding dataset: compiled using chatGPT
 
-Project Structure:
-
+## Project Structure:
+"""
 CAPSTONE/
-|-- data/
-|   |-- raw/
-|   |-- interim/
-|   |__ cleaned/  
-|-- notebooks/
-|   |-- 01_scraping.ipynb
-|   |-- 02_cleaning.ipynb
-|   |-- 03_eda.ipynb
-|   |-- 04_sql_analysis.ipynb
-|   |__ 05_modeling.ipynb
-|-- src/
-|   |-- cleaning.py
-|   |__ utils.py
-|-- sql/
-|   |__create_schema.sql
-|-- visuals/
-|-- load_data.py
-|-- load_fact_performace.py
-|-- track_jumps.db
+├── data/
+|   ├── raw/
+|   ├── interim/
+|   └── cleaned/  
+├── notebooks/
+|   ├── 01_scraping.ipynb
+|   ├── 02_cleaning.ipynb
+|   ├── 03_eda.ipynb
+|   ├── 04_sql_analysis.ipynb
+|   └──  05_modeling.ipynb
+├── src/
+|   ├── cleaning.py
+|   └──  utils.py
+├── sql/
+|   └── create_schema.sql
+├── visuals/
+├── load_data.py
+├── load_fact_performace.py
+├── track_jumps.db
+└── README.
 
+"""
 Data Cleaning:
 
 Steps:
@@ -40,6 +45,10 @@ Steps:
 - Removed wind data for high jumb; missing wind fields filled with '0.0' for all other events
 - Elevation added to venues and indoor/outdoor flags applied
 - Added athlete ages at the time of the meet.
+
+Status:
+
+Cleaned datasets were finalized on 15/12/2025. All work after this date is analytical and does not modify the underlying data.
 
 Database Design:
 

@@ -6,6 +6,7 @@ a consistent, repeatable workflow after many iterations of a manual cleaning pro
 
 With 18 files (3-events, 2-genders, and 3-age groups) combined into 6 running this script processes all of them 
 at once and saves the cleaned versions into the data/interim/cleaned folder.
+
 """
 
 import pandas as pd
