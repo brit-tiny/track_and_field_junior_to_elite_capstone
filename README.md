@@ -34,7 +34,7 @@ NOTE: sqlite3 required. Download "sqlite-tools-win-x64-*.zip" from https://www.s
     - pip install -r requirements.txt
 
 ## Project Structure:
-'''
+```
 CAPSTONE/
 ├── data/
 │   ├── raw/
@@ -57,7 +57,7 @@ CAPSTONE/
 ├── track_jumps.db
 └── README.
 
-'''
+```
 
 ## Loading the Database
 sqlite3 track_jumps.db >sql/create_schema.sql
