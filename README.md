@@ -8,8 +8,7 @@ This project aims to analyze top performance in long jump, triple jump, and high
 
 ## Data Sources:
 
-- [World Althetics](urlhttps://worldathletics.org/records/toplists/jumps/high-jump/all/women/senior/2025?regionType=world&page=1&bestResultsOnly=true&maxResultsByCountry=all&eventId=10229526&ageCategory=senior)
-
+- World Althetics Toplist: https://worldathletics.org/
 - Venue geocoding dataset: compiled using chatGPT
 
 ## Data Cleaning:
@@ -68,7 +67,7 @@ If the database does not exist in bash:
 
 #### This will load the database design:
 
-Dimentional tables
+Dimensional tables
 - dim_athletes
 - dim_events
 - dim_meets
@@ -95,7 +94,7 @@ Charts were created within the notebooks and save locally at execution
 Plots created with:
 - matplotlib
 - seaborn
-- custom color palette     "#BC94FF", "#DB8EA7", "#F2B762", "#5F4782"
+- custom color palette   #BC94FF, #DB8EA7, #F2B762, #5F4782
 
 Analysis Highlights:
 Using SQL(joins, aggregations) the analysis explores:
@@ -120,7 +119,9 @@ Cleaned datasets were finalized on 15/12/2025. All work after this date is analy
 ## Notes to Reviewer:
 
 - Venue elevation was included where city level data was publicly available. Many venues were only listed by name and country lacking any precise information for geolocation thus resulting in a null elevation. I chose this approach to keep my dataset's integrity while not forcing a false narrative. 
-- Raw World Athletics data was scraped and combined by event and gender into interim datasets using Python script prior to exploration, cleaning and analysis.
+- Raw World Athletics data was scraped and combined by event and gender into interim datasets using Python script prior to exploration, cleaning and analysis. To rerun this pipeline:
+    - Run world_athletics_scraper.py 
+    - Then run 01_scraping.ipynb 
 - This project does not account for:
     - training methods and frequency
     - injury history
